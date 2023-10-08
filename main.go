@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 )
 
+const port = 8080
 const counterPath = "data/counter.json"
 
 type Counter struct {
@@ -40,9 +41,9 @@ func main() {
 	fmt.Println("Welcome to Containers.")
 	fmt.Printf("Service started by: %s\n", user.Username)
 	fmt.Printf("Running on host: %s\n", hostname)
-	fmt.Println("Server listening on http://localhost:8081...")
+	fmt.Printf("Server listening on http://localhost:%d...\n", port)
 
-	httpError := http.ListenAndServe(":8081", nil)
+	httpError := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	fmt.Printf("Fatal error: %v\n", httpError)
 }
 
